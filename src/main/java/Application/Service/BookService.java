@@ -36,14 +36,14 @@ public class BookService {
         this.bookDAO = bookDAO;
     }
     /**
-     * TODO: Use the bookDAO to retrieve all books.
+     * Use the bookDAO to retrieve all books.
      * @return all books.
      */
     public List<Book> getAllBooks() {
-        return null;
+        return bookDAO.getAllBooks();
     }
     /**
-     * TODO: Use the bookDAO to persist a book to the database.
+     * Use the bookDAO to persist a book to the database.
      * An ISBN will be provided in Book. Method should check if the book ISBN already exists before it attempts to
      * persist it.
      * @param book a book object.
@@ -51,15 +51,15 @@ public class BookService {
      * key was already in use.)
      */
     public Book addBook(Book book) {
-
-        return null;
+        if(bookDAO.getBookByIsbn(book.getIsbn()) != null) return null;
+        return bookDAO.insertBook(book);
     }
     /**
-     * TODO: Use the bookDAO to retrieve a list of all books that have a bookCount above 0.
+     * Use the bookDAO to retrieve a list of all books that have a bookCount above 0.
      * @return all available books (bookCount over zero)
      */
     public List<Book> getAllAvailableBooks() {
-        return null;
+        return bookDAO.getBooksWithBookCountOverZero();
     }
 
 }
